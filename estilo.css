@@ -1,0 +1,41 @@
+
+  /* Estilo para el fondo oscuro */
+  body {
+    background-color: #333; /* Color de fondo oscuro */
+    color: #fff; /* Color del texto */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+  }
+
+  /* Estilo para el encabezado */
+  h1 {
+    font-size: 24px; /* Tamaño de fuente del título */
+    color: #006400; /* Color verde oscuro del título */
+    text-align: left; /* Alineación del título */
+    margin-top: 10px; /* Espacio superior al título */
+  }
+
+  /* Estilo para la separación */
+  hr {
+    border: 1px solid #0066cc; /* Color de la línea separadora */
+    margin-top: 20px; /* Espacio superior a la separación */
+    margin-bottom: 20px; /* Espacio inferior a la separación */
+  }
+
+  /* Estilo para los enlaces */
+  a {
+    color: #66ccff; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+  }
+
+  /* Estilo para los enlaces al pasar el cursor */
+  a:hover {
+    text-decoration: underline; /* Subrayado al pasar el cursor por los enlaces */
+  }
+
+/* Estilo para los R chunks */
+pre.source {
+  background-color: #333; /* Color de fondo oscuro */
+  color: #fff; /* Color del texto */
+  padding: 10px; /* Espacio interno para el contenido */
+  border-radius: 5px; /* Bordes redondeados */
+}

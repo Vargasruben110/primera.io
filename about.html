@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>about.knit</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DISEÑO EXPERIMENTAL</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INTRODUCCION</a>
+</li>
+<li>
+  <a href="about.html">BASE DE DATOS</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="base-de-datos." class="section level3">
+<h3><em>Base De Datos.</em></h3>
+<div id="descripción." class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este comando te ayudará a explorar y comprender los conjuntos de
+datos disponibles en el paquete “datasets” y te proporcionará
+información valiosa sobre cómo trabajar con ellos en R. Puedes utilizar
+estos conjuntos de datos para prácticas y ejemplos mientras aprendes R o
+para realizar análisis y visualizaciones de datos en tus proyectos.</p>
+<pre class="r"><code>help(package = &quot;datasets&quot;)</code></pre>
+</div>
+</div>
+<div id="cargar-la-base-de-datos-orange." class="section level3">
+<h3><em>Cargar La Base De Datos Orange.</em></h3>
+<div id="descripción.-1" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<pre class="r"><code>data(Orange)
+
+Orange</code></pre>
+<pre><code>##    Tree  age circumference
+## 1     1  118            30
+## 2     1  484            58
+## 3     1  664            87
+## 4     1 1004           115
+## 5     1 1231           120
+## 6     1 1372           142
+## 7     1 1582           145
+## 8     2  118            33
+## 9     2  484            69
+## 10    2  664           111
+## 11    2 1004           156
+## 12    2 1231           172
+## 13    2 1372           203
+## 14    2 1582           203
+## 15    3  118            30
+## 16    3  484            51
+## 17    3  664            75
+## 18    3 1004           108
+## 19    3 1231           115
+## 20    3 1372           139
+## 21    3 1582           140
+## 22    4  118            32
+## 23    4  484            62
+## 24    4  664           112
+## 25    4 1004           167
+## 26    4 1231           179
+## 27    4 1372           209
+## 28    4 1582           214
+## 29    5  118            30
+## 30    5  484            49
+## 31    5  664            81
+## 32    5 1004           125
+## 33    5 1231           142
+## 34    5 1372           174
+## 35    5 1582           177</code></pre>
+<p>Esta base de datos contiene información sobre el rendimiento de los
+árboles de naranja en diferentes experimentos. Aquí está una explicación
+de los datos:</p>
+<ul>
+<li><p><strong>Tree</strong>: Esta columna identifica el número de árbol
+en el experimento. Hay cinco árboles diferentes etiquetados como 1, 2,
+3, 4 y 5. Cada árbol representa una unidad experimental
+separada.</p></li>
+<li><p><strong>age</strong>: Esta columna representa la edad del árbol
+en días. Muestra cuántos días han pasado desde que se plantó el árbol
+hasta el momento de la medición.</p></li>
+<li><p><strong>circumference</strong>: Esta columna representa la
+circunferencia del tronco del árbol en milímetros. La circunferencia del
+tronco es una medida importante para evaluar el crecimiento de los
+árboles y su salud.</p></li>
+</ul>
+<p>Los datos muestran cómo la edad y la circunferencia del tronco de los
+árboles de naranja cambian a lo largo del tiempo y en diferentes
+árboles. Cada fila en la tabla representa una observación tomada en un
+momento específico para un árbol particular.</p>
+</div>
+</div>
+<div id="mostrar-las-primeras-y-ultimas-filas-de-la-base-de-datos."
+class="section level3">
+<h3><em>Mostrar Las Primeras Y Ultimas Filas De La Base De
+Datos.</em></h3>
+<div id="descripción.-2" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>En el contexto de la base de datos “Orange” que proporcionaste
+anteriormente, estos comandos se utilizan de la siguiente manera:</p>
+<ul>
+<li><p><strong>head(Orange)</strong>: Este comando muestra las primeras
+filas de la base de datos “Orange”. Por lo general, muestra las primeras
+6 filas de datos por defecto, pero puedes especificar un número
+diferente de filas si lo deseas. Las filas mostradas te darán una idea
+de cómo se estructuran y qué tipo de información contiene la base de
+datos.</p></li>
+<li><p><strong>tail(Orange)</strong>: Este comando muestra las últimas
+filas de la base de datos “Orange”. Al igual que con
+<strong>head()</strong>, por defecto muestra las últimas 6 filas, pero
+puedes especificar un número diferente si es necesario. Las filas
+finales te darán una idea de cómo terminan los datos en la base de
+datos.</p></li>
+</ul>
+<pre class="r"><code>head(Orange)</code></pre>
+<pre><code>##   Tree  age circumference
+## 1    1  118            30
+## 2    1  484            58
+## 3    1  664            87
+## 4    1 1004           115
+## 5    1 1231           120
+## 6    1 1372           142</code></pre>
+<pre class="r"><code>tail(Orange)</code></pre>
+<pre><code>##    Tree  age circumference
+## 30    5  484            49
+## 31    5  664            81
+## 32    5 1004           125
+## 33    5 1231           142
+## 34    5 1372           174
+## 35    5 1582           177</code></pre>
+<p><strong>Primeros 6 datos (observaciones 1 a 6)</strong>:</p>
+<p>Estas observaciones corresponden al Árbol 1. - El árbol 1 muestra un
+crecimiento gradual a lo largo del tiempo, ya que la circunferencia del
+tronco aumenta a medida que pasa el tiempo. - La edad inicial del árbol
+1 es de 118 días, con una circunferencia de 30 mm, y después de 1372
+días, la circunferencia ha aumentado a 142 mm.</p>
+<p><strong>Últimos 6 datos (observaciones 30 a 35)</strong>:</p>
+<p>Estas observaciones corresponden al Árbol 5. - Al igual que el Árbol
+1, el Árbol 5 también muestra un crecimiento gradual a lo largo del
+tiempo, con un aumento en la circunferencia del tronco. - La edad
+inicial del Árbol 5 es de 118 días, con una circunferencia de 30 mm, y
+después de 1372 días, la circunferencia ha aumentado a 174 mm.</p>
+</div>
+</div>
+<div id="estructura-de-la-base-de-datos." class="section level3">
+<h3><em>Estructura De La Base De Datos.</em></h3>
+<div id="descripción.-3" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Proporciona información útil para comprender la estructura y el
+contenido de la base de datos “Orange”, incluyendo el tipo de datos y
+las variables presentes en ella. Esto es especialmente útil al trabajar
+con conjuntos de datos desconocidos o para verificar la estructura de
+los datos antes de realizar análisis y visualizaciones.</p>
+<pre class="r"><code>str(Orange)</code></pre>
+<pre><code>## Classes &#39;nfnGroupedData&#39;, &#39;nfGroupedData&#39;, &#39;groupedData&#39; and &#39;data.frame&#39;:   35 obs. of  3 variables:
+##  $ Tree         : Ord.factor w/ 5 levels &quot;3&quot;&lt;&quot;1&quot;&lt;&quot;5&quot;&lt;&quot;2&quot;&lt;..: 2 2 2 2 2 2 2 4 4 4 ...
+##  $ age          : num  118 484 664 1004 1231 ...
+##  $ circumference: num  30 58 87 115 120 142 145 33 69 111 ...
+##  - attr(*, &quot;formula&quot;)=Class &#39;formula&#39;  language circumference ~ age | Tree
+##   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_EmptyEnv&gt; 
+##  - attr(*, &quot;labels&quot;)=List of 2
+##   ..$ x: chr &quot;Time since December 31, 1968&quot;
+##   ..$ y: chr &quot;Trunk circumference&quot;
+##  - attr(*, &quot;units&quot;)=List of 2
+##   ..$ x: chr &quot;(days)&quot;
+##   ..$ y: chr &quot;(mm)&quot;</code></pre>
+</div>
+</div>
+<div id="número-de-filas." class="section level3">
+<h3><em>Número De Filas.</em></h3>
+<div id="descripción.-4" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<ul>
+<li>nrow(Orange) Proporciona el número total de filas u observaciones en
+la base de datos “Orange”, lo que es útil para tener una idea de la
+cantidad de datos disponibles en el conjunto de datos.</li>
+<li>ncol(Orange) Proporciona el número total de columnas o variables en
+la base de datos “Orange”, lo que es útil para comprender la estructura
+de la base de datos y cuántos atributos diferentes se registran para
+cada observación.</li>
+<li>dim(Orange) Es útil para obtener información sobre las dimensiones
+de la base de datos, es decir, cuántas filas y columnas contiene, lo que
+puede ser útil al realizar análisis y manipulación de datos.</li>
+</ul>
+<pre class="r"><code>nrow(Orange)</code></pre>
+<pre><code>## [1] 35</code></pre>
+<pre class="r"><code>ncol(Orange)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>dim(Orange)</code></pre>
+<pre><code>## [1] 35  3</code></pre>
+</div>
+</div>
+<div id="nombres-de-las-columnas." class="section level3">
+<h3><em>Nombres De Las Columnas.</em></h3>
+<div id="descripción.-5" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>proporciona los nombres de las columnas o variables presentes en la
+base de datos “Orange”, lo que facilita la identificación y el acceso a
+las variables específicas en nuestros análisis y operaciones.</p>
+<pre class="r"><code>names(Orange)</code></pre>
+<pre><code>## [1] &quot;Tree&quot;          &quot;age&quot;           &quot;circumference&quot;</code></pre>
+</div>
+</div>
+<div id="acceder-a-variables-específicas." class="section level3">
+<h3><em>Acceder A Variables Específicas.</em></h3>
+<div id="descripción.-6" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Los comandos <strong>Orange<span class="math inline">\(age** y
+**Orange\)</span>circumference</strong> se utilizan para acceder a
+columnas específicas de la base de datos “Orange”. En R, el símbolo
+<strong>$</strong> se utiliza para seleccionar una columna específica de
+un data frame o un objeto de datos similar.</p>
+<ul>
+<li><strong>Orange$age</strong>: Este comando nos devuelve la columna
+“age” de la base de datos “Orange”. En esta columna se registra la edad
+de los árboles en días. Al ejecutar este comando, obtendrás un vector
+que contiene todos los valores de edad de los árboles en el conjunto de
+datos.</li>
+<li><strong>Orange$circumference</strong>: Este comando nos devuelve la
+columna “circumference” de la base de datos “Orange”. En esta columna se
+registra la circunferencia del tronco de los árboles en milímetros. Al
+ejecutar este comando, obtendrás un vector que contiene todos los
+valores de circunferencia del tronco en el conjunto de datos.</li>
+</ul>
+<pre class="r"><code>Orange$age</code></pre>
+<pre><code>##  [1]  118  484  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484
+## [17]  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484  664 1004
+## [33] 1231 1372 1582</code></pre>
+<pre class="r"><code>Orange$circumference</code></pre>
+<pre><code>##  [1]  30  58  87 115 120 142 145  33  69 111 156 172 203 203  30  51  75 108 115 139
+## [21] 140  32  62 112 167 179 209 214  30  49  81 125 142 174 177</code></pre>
+</div>
+</div>
+<div id="otra-forma-de-acceder-a-las-variables." class="section level3">
+<h3><em>Otra Forma De Acceder A Las Variables.</em></h3>
+<div id="descripción.-7" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estos comandos te permiten acceder y trabajar con datos específicos
+dentro de la base de datos “Orange” según tus necesidades de análisis o
+manipulación de datos. - <strong>Orange[, “age”]</strong> selecciona una
+columna completa. - <strong>Orange[2, ]</strong> selecciona una fila
+completa. - <strong>Orange[2, 2]</strong> selecciona un valor específico
+en una fila y columna.</p>
+<pre class="r"><code>Orange[, &quot;age&quot;]</code></pre>
+<pre><code>##  [1]  118  484  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484
+## [17]  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484  664 1004
+## [33] 1231 1372 1582</code></pre>
+<pre class="r"><code>Orange[2, ]</code></pre>
+<pre><code>##   Tree age circumference
+## 2    1 484            58</code></pre>
+<pre class="r"><code>Orange[2, 2]</code></pre>
+<pre><code>## [1] 484</code></pre>
+</div>
+</div>
+<div id="usar-la-función-attach-y-detach." class="section level3">
+<h3><em>Usar La Función attach Y detach.</em></h3>
+<div id="descripción.-8" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>las funciones <code>attach()</code> y <code>detach()</code> en R las
+podemos explicar asi:</p>
+<ul>
+<li><p><strong>attach(Orange)</strong>: La función
+<strong>attach()</strong> se utiliza para adjuntar un objeto de datos
+(en este caso, la base de datos “Orange”) al entorno de trabajo actual.
+Cuando adjuntas un objeto de datos, R asume que las variables de ese
+objeto están disponibles sin la necesidad de especificar el nombre del
+objeto o el operador <strong>$</strong>. En este caso, después de
+ejecutar <strong>attach(Orange)</strong>, puedes acceder a las variables
+de la base de datos “Orange” directamente por su nombre, como si
+estuvieran en el entorno global.</p></li>
+<li><p><strong>detach(Orange)</strong>: La función
+<strong>detach()</strong> se utiliza para desvincular o eliminar la
+adjunción de un objeto de datos del entorno de trabajo actual. Después
+de ejecutar <strong>detach(Orange)</strong>, la base de datos “Orange”
+ya no está adjunta al entorno de trabajo, y debes usar la notación
+<strong>Orange$</strong> para acceder a sus variables.</p></li>
+</ul>
+<pre class="r"><code>attach(Orange)
+age</code></pre>
+<pre><code>##  [1]  118  484  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484
+## [17]  664 1004 1231 1372 1582  118  484  664 1004 1231 1372 1582  118  484  664 1004
+## [33] 1231 1372 1582</code></pre>
+<pre class="r"><code>detach(Orange)</code></pre>
+</div>
+</div>
+<div id="acceder-a-observaciones-específicas." class="section level3">
+<h3><em>Acceder a observaciones específicas.</em></h3>
+<div id="descripción.-9" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estos comandos nos permiten acceder a datos específicos en la base de
+datos “Orange” según el número de observación y el nombre de la
+variable. Esto es útil para extraer información específica de la base de
+datos cuando sea necesario para análisis o visualizaciones
+particulares.</p>
+<pre class="r"><code>Orange[1, ]</code></pre>
+<pre><code>##   Tree age circumference
+## 1    1 118            30</code></pre>
+<pre class="r"><code>Orange[2, 1]</code></pre>
+<pre><code>## [1] 1
+## Levels: 3 &lt; 1 &lt; 5 &lt; 2 &lt; 4</code></pre>
+<pre class="r"><code>Orange[4, 5]</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>Orange[1, &quot;age&quot;]</code></pre>
+<pre><code>## [1] 118</code></pre>
+<ul>
+<li><strong>Orange[1, ]</strong>: Este comando selecciona la primera
+observación (fila) de la base de datos “Orange” y devuelve todos los
+valores de esa fila. Esto te dará una visión completa de los atributos
+de la primera observación.</li>
+<li><strong>Orange[2, 1]</strong>: Este comando selecciona el valor que
+se encuentra en la segunda fila (observación) y la primera columna
+(variable) de la base de datos “Orange”. En este caso, estarías
+obteniendo un valor específico de la segunda observación y la variable
+“Tree” (número de árbol).</li>
+<li><strong>Orange[4, 5]</strong>: Este comando selecciona el valor que
+se encuentra en la cuarta fila (observación) y la quinta columna
+(variable) de la base de datos “Orange”. Obtendrás un valor específico
+de la cuarta observación y la variable “circumference” (circunferencia
+del tronco).</li>
+<li><strong>Orange[1, “age”]</strong>: Este comando selecciona el valor
+que se encuentra en la primera fila (observación) y la columna “age” de
+la base de datos “Orange”. Esto te dará el valor específico de la edad
+del árbol en la primera observación.</li>
+</ul>
+</div>
+</div>
+<div id="acceder-a-varias-columnas." class="section level3">
+<h3><em>Acceder a varias columnas.</em></h3>
+<div id="descripción.-10" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Al ejecutar este comando, obtendrEMOS un nuevo conjunto de datos que
+incluye solo las columnas “age” y “circumference” de la base de datos
+“Orange”. Esto puede ser útil cuando deseas trabajar solo con un
+subconjunto específico de variables en tu análisis o visualización de
+datos.</p>
+<pre class="r"><code>Orange[, c(&quot;age&quot;, &quot;circumference&quot;)]</code></pre>
+<pre><code>##     age circumference
+## 1   118            30
+## 2   484            58
+## 3   664            87
+## 4  1004           115
+## 5  1231           120
+## 6  1372           142
+## 7  1582           145
+## 8   118            33
+## 9   484            69
+## 10  664           111
+## 11 1004           156
+## 12 1231           172
+## 13 1372           203
+## 14 1582           203
+## 15  118            30
+## 16  484            51
+## 17  664            75
+## 18 1004           108
+## 19 1231           115
+## 20 1372           139
+## 21 1582           140
+## 22  118            32
+## 23  484            62
+## 24  664           112
+## 25 1004           167
+## 26 1231           179
+## 27 1372           209
+## 28 1582           214
+## 29  118            30
+## 30  484            49
+## 31  664            81
+## 32 1004           125
+## 33 1231           142
+## 34 1372           174
+## 35 1582           177</code></pre>
+</div>
+</div>
+<div id="otra-forma-de-seleccionar-columnas." class="section level3">
+<h3><em>Otra forma de seleccionar columnaS.</em></h3>
+<div id="descripción.-11" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este comando excluye las columnas 4 y 5 de la base de datos “Orange”.
+El operador - se utiliza para indicar que deseas eliminar (excluir) las
+columnas especificadas. En este caso, las columnas 4 y 5 corresponden a
+“age” (edad) y “circumference” (circunferencia), respectivamente. Por lo
+tanto, el resultado es un subconjunto de la base de datos que contiene
+todas las filas y todas las columnas excepto las dos mencionadas.</p>
+<pre class="r"><code>Orange[, -c(4:5)]</code></pre>
+<pre><code>##    Tree  age circumference
+## 1     1  118            30
+## 2     1  484            58
+## 3     1  664            87
+## 4     1 1004           115
+## 5     1 1231           120
+## 6     1 1372           142
+## 7     1 1582           145
+## 8     2  118            33
+## 9     2  484            69
+## 10    2  664           111
+## 11    2 1004           156
+## 12    2 1231           172
+## 13    2 1372           203
+## 14    2 1582           203
+## 15    3  118            30
+## 16    3  484            51
+## 17    3  664            75
+## 18    3 1004           108
+## 19    3 1231           115
+## 20    3 1372           139
+## 21    3 1582           140
+## 22    4  118            32
+## 23    4  484            62
+## 24    4  664           112
+## 25    4 1004           167
+## 26    4 1231           179
+## 27    4 1372           209
+## 28    4 1582           214
+## 29    5  118            30
+## 30    5  484            49
+## 31    5  664            81
+## 32    5 1004           125
+## 33    5 1231           142
+## 34    5 1372           174
+## 35    5 1582           177</code></pre>
+</div>
+</div>
+<div id="usar-la-función-which-para-filtrar-datos."
+class="section level3">
+<h3><em>Usar la función which para filtrar datos.</em></h3>
+<div id="descripción.-12" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>La función <strong>which()</strong> para filtrar datos en la base de
+datos “Orange” según ciertos criterios.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Orange[which(Orange$age &gt; 120), ]</strong>: Este comando
+selecciona todas las filas (observaciones) de la base de datos “Orange”
+en las que el valor de la columna “age” (edad) sea mayor que 120 días.
+La función <strong>which()</strong> devuelve los índices de las
+observaciones que cumplen con este criterio, y luego se utilizan esos
+índices para seleccionar las filas correspondientes.</li>
+<li><strong>Orange[which(Orange$circumference &lt; 85), ]</strong>: Este
+comando selecciona todas las filas de la base de datos “Orange” en las
+que el valor de la columna “circumference” (circunferencia) sea menor
+que 85 mm. Al igual que en el primer comando, la función
+<strong>which()</strong> se utiliza para obtener los índices de las
+observaciones que cumplen con el criterio y luego se seleccionan las
+filas correspondientes.</li>
+<li><strong>Orange[which(Orange<span class="math inline">\(age &gt;, 100
+&amp; Orange\)</span>circumference &lt; 85), ]</strong>: Este comando
+combina dos condiciones. Selecciona todas las filas de la base de datos
+“Orange” en las que el valor de la columna “age” sea mayor que 100 días
+y el valor de la columna “circumference” sea menor que 85 mm. La función
+<strong>which()</strong> se utiliza para obtener los índices de las
+observaciones que cumplen con ambas condiciones, y luego se seleccionan
+las filas correspondientes.</li>
+</ol>
+<pre class="r"><code>Orange[which(Orange$age &gt; 120), ]</code></pre>
+<pre><code>##    Tree  age circumference
+## 2     1  484            58
+## 3     1  664            87
+## 4     1 1004           115
+## 5     1 1231           120
+## 6     1 1372           142
+## 7     1 1582           145
+## 9     2  484            69
+## 10    2  664           111
+## 11    2 1004           156
+## 12    2 1231           172
+## 13    2 1372           203
+## 14    2 1582           203
+## 16    3  484            51
+## 17    3  664            75
+## 18    3 1004           108
+## 19    3 1231           115
+## 20    3 1372           139
+## 21    3 1582           140
+## 23    4  484            62
+## 24    4  664           112
+## 25    4 1004           167
+## 26    4 1231           179
+## 27    4 1372           209
+## 28    4 1582           214
+## 30    5  484            49
+## 31    5  664            81
+## 32    5 1004           125
+## 33    5 1231           142
+## 34    5 1372           174
+## 35    5 1582           177</code></pre>
+<pre class="r"><code>Orange[which(Orange$circumference &lt; 85), ]</code></pre>
+<pre><code>##    Tree age circumference
+## 1     1 118            30
+## 2     1 484            58
+## 8     2 118            33
+## 9     2 484            69
+## 15    3 118            30
+## 16    3 484            51
+## 17    3 664            75
+## 22    4 118            32
+## 23    4 484            62
+## 29    5 118            30
+## 30    5 484            49
+## 31    5 664            81</code></pre>
+<pre class="r"><code>Orange[which(Orange$age &gt; 100 &amp; Orange$circumference &lt; 85), ]</code></pre>
+<pre><code>##    Tree age circumference
+## 1     1 118            30
+## 2     1 484            58
+## 8     2 118            33
+## 9     2 484            69
+## 15    3 118            30
+## 16    3 484            51
+## 17    3 664            75
+## 22    4 118            32
+## 23    4 484            62
+## 29    5 118            30
+## 30    5 484            49
+## 31    5 664            81</code></pre>
+</div>
+</div>
+<div id="editar-variables." class="section level3">
+<h3><em>Editar variables.</em></h3>
+<div id="descripción.-13" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este proceso te permite agregar una nueva variable a la base de
+datos, inicializarla con valores NA y luego editar los valores de esa
+variable en filas específicas según tus necesidades de análisis de
+datos. - <strong>Orange$new_var &lt;- NA</strong>: Con este comando, se
+crea una nueva columna llamada “new_var” en la base de datos “Orange”.
+Inicialmente, todos los valores de esta columna se establecen en NA, que
+indica que no hay datos disponibles.</p>
+<ul>
+<li><p><strong>head(Orange)</strong>: Después de agregar la nueva
+columna, se utiliza <strong>head()</strong> para mostrar las primeras
+filas de la base de datos “Orange”. Verás que la columna “new_var” se ha
+agregado y todos sus valores son NA en las primeras filas.</p></li>
+<li><p><strong>Orange[1, “new_var”] &lt;- 82</strong>: En este paso, se
+cambia el valor de la variable “new_var” en la primera fila (observación
+1) de la base de datos “Orange” a 82. Esto significa que la primera
+observación ahora tiene un valor específico de 82 en la columna
+“new_var”.</p></li>
+<li><p><strong>head(Orange)</strong>: Después de realizar la edición en
+la primera fila, se utiliza nuevamente <strong>head()</strong> para
+mostrar las primeras filas de la base de datos “Orange”. Ahora, en la
+primera fila, verás que la columna “new_var” tiene el valor 82, mientras
+que en las filas restantes, los valores de “new_var” siguen siendo
+NA.</p></li>
+</ul>
+<pre class="r"><code>Orange$new_var &lt;- NA
+head(Orange)</code></pre>
+<pre><code>##   Tree  age circumference new_var
+## 1    1  118            30      NA
+## 2    1  484            58      NA
+## 3    1  664            87      NA
+## 4    1 1004           115      NA
+## 5    1 1231           120      NA
+## 6    1 1372           142      NA</code></pre>
+<pre class="r"><code>Orange[1, &quot;new_var&quot;] &lt;- 82
+head(Orange)</code></pre>
+<pre><code>##   Tree  age circumference new_var
+## 1    1  118            30      82
+## 2    1  484            58      NA
+## 3    1  664            87      NA
+## 4    1 1004           115      NA
+## 5    1 1231           120      NA
+## 6    1 1372           142      NA</code></pre>
+</div>
+</div>
+<div id="fin" class="section level2">
+<h2><em>FIN</em></h2>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

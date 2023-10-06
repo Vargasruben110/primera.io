@@ -1,0 +1,13 @@
+name: "DISEÑO EXPERIMENTAL"
+output_dir: "."
+navbar:
+  title: "DISEÑO EXPERIMENTAL"
+  left:
+    - text: "INTRODUCCION"
+      href: index.html
+    - text: "BASE DE DATOS"
+      href: about.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate

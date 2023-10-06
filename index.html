@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ruben Vargas" />
+
+
+<title>index.knit</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="estilo.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DISEÑO EXPERIMENTAL</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">INTRODUCCION</a>
+</li>
+<li>
+  <a href="about.html">BASE DE DATOS</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="introducción-al-r." class="section level3">
+<h3><em>Introducción al R.</em></h3>
+<div id="descripción." class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>R Studio es un entorno dedicado a trabajar con el lenguaje R y está
+diseñado para ser una herramienta poderosa para programadores y
+analistas de datos que utilizan R en sus proyectos.</p>
+<p><img src="r_studio.jpg" /></p>
+</div>
+</div>
+<div id="variables-en-r." class="section level3">
+<h3><em>Variables en R.</em></h3>
+<div id="descripción.-1" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este código realiza una serie de asignaciones de valores a variables,
+realiza operaciones aritméticas simples y realiza comparaciones lógicas
+para verificar relaciones entre números y valores de variables. Los
+resultados de estas operaciones se muestran en la consola de R.</p>
+<pre class="r"><code>mango&lt;-15
+mango&lt;-23
+
+mango&lt;- 
+  1000
+
+15 + 2</code></pre>
+<pre><code>## [1] 17</code></pre>
+<pre class="r"><code>mango + 2</code></pre>
+<pre><code>## [1] 1002</code></pre>
+<pre class="r"><code>2 + 2 #Sumas   </code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>3 - 1 #Restar  </code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>4*5 #Multiplicar </code></pre>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code>12 / 3 #Dividir </code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>7 ^ 2   #Al cuadrado </code></pre>
+<pre><code>## [1] 49</code></pre>
+<pre class="r"><code>0:25  #Series  </code></pre>
+<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25</code></pre>
+<pre class="r"><code>3 == 5  #Es igual?</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>5 != 0  #Es distino?</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>2 &gt; 9   #Mayor </code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>1 &lt; 8   #Menor</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>5 &gt;= 5  #Mayor o igual</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>4 &lt;= 1  #Menor o ogual</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>mango &lt; -1 #comparacion de texto y numero</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>meu_primeiro_objeto &lt;- 160</code></pre>
+</div>
+</div>
+<div id="creación-de-variables-en-r." class="section level3">
+<h3><em>Creación De Variables En R.</em></h3>
+<div id="descripción.-2" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este código ilustra la creación de variables en R, la asignación de
+valores de texto y numéricos a esas variables, y cómo realizar
+comparaciones de igualdad y desigualdad entre variables de texto.</p>
+<pre class="r"><code>meu_primeiro_objeto &lt;- 160
+
+nome_1 &lt;- &quot;usp&quot; # comillas PARA TODOS LOS VALORES TEXTUALES 
+# (CARACTERES)
+
+nome_1</code></pre>
+<pre><code>## [1] &quot;usp&quot;</code></pre>
+<pre class="r"><code>nome_2 &lt;- &#39;usp&#39;
+
+nome_2</code></pre>
+<pre><code>## [1] &quot;usp&quot;</code></pre>
+<pre class="r"><code>nome_1 == nome_2</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>nome_1 != nome_2</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>verdadeiro &lt;- nome_1 == nome_2
+
+verdadeiro</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>falso &lt;- nome_1 != nome_2
+
+falso</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+</div>
+<div id="otros-valores-importantes-en-r." class="section level3">
+<h3><em>Otros Valores Importantes En R.</em></h3>
+<div id="descripción.-3" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estos valores y constantes tienen roles específicos en R:</p>
+<ul>
+<li>TRUE y FALSE son valores lógicos para expresar la verdad o falsedad
+de afirmaciones.</li>
+<li>NA representa valores faltantes o desconocidos. NULL indica la
+ausencia de contenido.</li>
+<li>Inf y -Inf representan infinito positivo y negativo en el contexto
+numérico.</li>
+</ul>
+<pre class="r"><code>TRUE #logical</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>T #logical</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>FALSE #logical</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>F #logical</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>NA #logical ES DISTINO DE CERO!!!!!!</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>NULL #NULL</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>Inf #numeric</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<pre class="r"><code>-Inf #numeric</code></pre>
+<pre><code>## [1] -Inf</code></pre>
+</div>
+</div>
+<div id="creación-de-vectores." class="section level3">
+<h3><em>Creación De Vectores.</em></h3>
+<div id="descripción.-4" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Errores en la creación de vectores:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>vetor &lt;- 1 2 3 4 5 6 7 8 9 10: Este intento da error porque no
+se están utilizando comas ni un operador para separar los elementos del
+vector. En R, necesitas usar comas o el operador c() para definir un
+vector.</p></li>
+<li><p>vetor &lt;- 1, 2, 3, 4, 5, 6, 7, 8, 9, 10: Este intento también
+da error porque las comas no son suficientes para definir un vector. R
+necesita que utilices la función c() para concatenar los elementos en un
+vector.</p></li>
+<li><p>vetor &lt;- (1, 2, 3, 4, 5, 6, 7, 8, 9, 10): Al igual que en el
+intento anterior, el uso de paréntesis no es suficiente para definir un
+vector en R. Debes utilizar c().</p></li>
+</ol>
+<p>Esta es la forma correcta de crear un vector en R. Aquí, c() es una
+función que se utiliza para concatenar elementos y crear un vector. Los
+números del 1 al 10 están separados por comas dentro de c(), lo que crea
+un vector llamado vetor que contiene esos números.</p>
+<p>Al ejecutar este código, el resultado será un vector llamado vetor
+con los valores del 1 al 10.</p>
+<pre class="r"><code>vetor &lt;- 
+  c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+vetor</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<div id="valores-textuales." class="section level3">
+<h3><em>Valores Textuales.</em></h3>
+<div id="descripción.-5" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este código crea un vector llamado nomes que almacena nombres como
+valores textuales y luego muestra el contenido de ese vector en la
+consola de R.</p>
+<pre class="r"><code>nomes &lt;- c(&quot;mariana&quot;, &quot;pedro&quot;, &quot;daniela&quot;)
+nomes</code></pre>
+<pre><code>## [1] &quot;mariana&quot; &quot;pedro&quot;   &quot;daniela&quot;</code></pre>
+</div>
+</div>
+<div id="funciones." class="section level3">
+<h3><em>Funciones.</em></h3>
+<div id="descripción.-6" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estos códigos demuestran cómo utilizar la función round() para
+redondear números en R y cómo obtener información sobre sus argumentos y
+funcionalidad a través de la ayuda y la función args().</p>
+<pre class="r"><code># redondear:
+round(
+  x = 3.141592)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>round(x = 3.141592, digits = 2)</code></pre>
+<pre><code>## [1] 3.14</code></pre>
+<pre class="r"><code># argumentos 
+
+?round
+
+# o asi:
+args(round)</code></pre>
+<pre><code>## function (x, digits = 0) 
+## NULL</code></pre>
+<pre class="r"><code>round</code></pre>
+<pre><code>## function (x, digits = 0)  .Primitive(&quot;round&quot;)</code></pre>
+</div>
+</div>
+<div id="coerción." class="section level3">
+<h3><em>Coerción.</em></h3>
+<div id="descripción.-7" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>El código muestra cómo R maneja la coerción automática para
+asegurarse de que todos los elementos de un vector sean del mismo tipo y
+cómo puedes verificar el tipo de datos de diferentes objetos utilizando
+la función class().</p>
+<pre class="r"><code>nomes_e_idades &lt;- c(&quot;mariana&quot;, 22, &quot;pedro&quot;, 30, &quot;daniela&quot;, 45)
+
+nomes_e_idades</code></pre>
+<pre><code>## [1] &quot;mariana&quot; &quot;22&quot;      &quot;pedro&quot;   &quot;30&quot;      &quot;daniela&quot; &quot;45&quot;</code></pre>
+<pre class="r"><code>?class
+class(nomes_e_idades)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(meu_primeiro_objeto)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(verdadeiro)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code># De nuevo:
+class(nomes_e_idades)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+</div>
+<div id="jerarquias." class="section level3">
+<h3><em>Jerarquias.</em></h3>
+<div id="descripción.-8" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>EN R decide automáticamente el tipo de datos predominante en un
+vector cuando se mezclan diferentes tipos de datos. La jerarquía
+predeterminada es: valores textuales &gt; valores numéricos &gt; valores
+lógicos. Los valores textuales tienen la prioridad más alta, seguidos de
+los valores numéricos y finalmente los valores lógicos.</p>
+<pre class="r"><code>teste &lt;- c(&quot;laranja&quot;, 230, FALSE)
+
+teste</code></pre>
+<pre><code>## [1] &quot;laranja&quot; &quot;230&quot;     &quot;FALSE&quot;</code></pre>
+<pre class="r"><code>class(teste)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>outro_teste &lt;- c(12, 37, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE)
+
+outro_teste</code></pre>
+<pre><code>## [1] 12 37  0  1  0  1  1  1  1</code></pre>
+<pre class="r"><code>class(outro_teste)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>missings &lt;- c(12, 37, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, NA)
+
+missings</code></pre>
+<pre><code>##  [1] 12 37  0  1  0  1  1  1  1 NA</code></pre>
+<pre class="r"><code>class(missings)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+</div>
+</div>
+<div id="variables-categoricas." class="section level3">
+<h3><em>Variables Categoricas.</em></h3>
+<div id="descripción.-9" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+</div>
+<div
+id="este-código-en-r-crea-un-vector-llamado-tipo_sanguineo-que-contiene-los-tipos-sanguíneos-como-valores-categóricos-y-luego-verifica-el-tipo-de-datos-de-ese-vector-se-crea-un-vector-que-almacena-tipos-sanguíneos-como-valores-categóricos-representados-por-cadenas-de-texto-y-verifica-que-el-tipo-de-datos-del-vector-sea-character."
+class="section level4">
+<h4>Este código en R crea un vector llamado ‘tipo_sanguineo’ que
+contiene los tipos sanguíneos como valores categóricos, y luego verifica
+el tipo de datos de ese vector, se crea un vector que almacena tipos
+sanguíneos como valores categóricos representados por cadenas de texto y
+verifica que el tipo de datos del vector sea “character”.</h4>
+<pre class="r"><code>tipo_sanguineo &lt;- c(
+  &quot;A+&quot;, &quot;A-&quot;, &quot;B+&quot;, &quot;B-&quot;, &quot;AB+&quot;, &quot;AB-&quot;, &quot;O+&quot;, &quot;O-&quot;)
+
+tipo_sanguineo</code></pre>
+<pre><code>## [1] &quot;A+&quot;  &quot;A-&quot;  &quot;B+&quot;  &quot;B-&quot;  &quot;AB+&quot; &quot;AB-&quot; &quot;O+&quot;  &quot;O-&quot;</code></pre>
+<pre class="r"><code>class(tipo_sanguineo)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+</div>
+<div id="transformacion." class="section level3">
+<h3><em>TransformaciOn.</em></h3>
+<div id="descripción.-10" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este código en R realiza una transformación en el vector
+‘tipo_sanguineo’ de valores categóricos representados como cadenas de
+texto. El código transforma el vector ‘tipo_sanguineo’ de valores
+categóricos representados como cadenas de texto en un factor, que es una
+estructura de datos especializada para representar variables categóricas
+en R. Después de la transformación, el vector es tratado y reconocido
+como un factor en lugar de un vector de caracteres.</p>
+<pre class="r"><code>tipo_sanguineo &lt;- factor(tipo_sanguineo)
+
+tipo_sanguineo</code></pre>
+<pre><code>## [1] A+  A-  B+  B-  AB+ AB- O+  O- 
+## Levels: A- A+ AB- AB+ B- B+ O- O+</code></pre>
+<pre class="r"><code>class(tipo_sanguineo)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+</div>
+</div>
+<div id="variables-nominales." class="section level3">
+<h3><em>Variables Nominales.</em></h3>
+<div id="descripción.-11" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>El código crea un objeto ‘nivel_escolarizacao’ que contiene
+categorías relacionadas con niveles de escolarización. Estas categorías
+son tratadas como cadenas de texto en este momento, pero si deseas
+trabajar con ellas como niveles ordinales, es posible que debas realizar
+una transformación adicional para indicar su orden en la escala ordinal.
+para variables nominales, no necesitas realizar ningún paso adicional
+después de crear el objeto con las categorías. Pero para variables
+ordinales, debes realizar pasos adicionales para indicar el orden
+específico de las categorías.</p>
+<pre class="r"><code>nivel_escolarizacao &lt;- c(&quot;fundamental&quot;, &quot;medio&quot;, &quot;pregrado&quot;)
+
+nivel_escolarizacao</code></pre>
+<pre><code>## [1] &quot;fundamental&quot; &quot;medio&quot;       &quot;pregrado&quot;</code></pre>
+<pre class="r"><code>class(nivel_escolarizacao)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+</div>
+<div id="funciones-de-factores." class="section level3">
+<h3><em>Funciones De Factores.</em></h3>
+<div id="descripción.-12" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Este código en R realiza dos acciones principales:</p>
+<ol style="list-style-type: decimal">
+<li><p>‘nivel_escolarizacao &lt;- factor(nivel_escolarizacao)’: Con esta
+línea, se utiliza la función ‘factor()’ para convertir el objeto
+‘nivel_escolarizacao’ en un factor. Esto es especialmente útil cuando se
+trabaja con variables ordinales, ya que permite establecer un orden
+específico para las categorías.</p></li>
+<li><p>‘nivel_escolarizacao &lt;- factor(nivel_escolarizacao, levels =
+c(“medio”, “fundamental”, “pregrado”))’: Aquí, se vuelve a utilizar la
+función ‘factor()’, pero esta vez se establece el orden de las
+categorías mediante el argumento ‘levels’. Se especifica que el orden
+deseado de las categorías es “medio”, “fundamental” y
+“pregrado”.</p></li>
+<li><p>‘class(nivel_escolarizacao)’: Se verifica el tipo de datos del
+objeto ‘nivel_escolarizacao’ después de la transformación. El resultado
+será “factor”, ya que el objeto ahora se considera un factor con un
+orden específico para las categorías.</p></li>
+</ol>
+<pre class="r"><code>nivel_escolarizacao &lt;- factor(nivel_escolarizacao)
+
+class(nivel_escolarizacao)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>nivel_escolarizacao</code></pre>
+<pre><code>## [1] fundamental medio       pregrado   
+## Levels: fundamental medio pregrado</code></pre>
+<pre class="r"><code># Nivel de factor():
+
+nivel_escolarizacao &lt;- factor(nivel_escolarizacao,
+                              levels = c(&quot;medio&quot;,
+                                         &quot;fundamental&quot;,
+                                         &quot;pregrado&quot;))
+?factor</code></pre>
+</div>
+</div>
+<div id="creacion-de-vectores-y-representacion-de-serie-de-datos."
+class="section level3">
+<h3><em>Creacion De Vectores Y Representacion De Serie De
+Datos.</em></h3>
+<div id="descripción.-13" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estos códigos en R crean vectores y representan una serie de datos
+sobre empresas y sus características.La informacion es dada en el codigo
+se puede introduccior nombre de la empresa, número de empleados,
+cotización en bolsa, sede en Brasil y el nombre de diferentes jecutivos.
+Los valores ‘NA’ se utilizan para indicar información faltante en
+algunos casos.</p>
+<pre class="r"><code>empresas &lt;- c(&quot;Empresa A&quot;, NA, &quot;Empresa C&quot;, &quot;Empresa D&quot;, &quot;Empresa E&quot;)
+funcionarios &lt;- c(100, 5000, 230, 12000, 1700)
+presenca_bolsa &lt;- c(F,T,NA,T,TRUE)
+sede_brasil &lt;- c(NA,0,1,0,0)
+diretor_executivo &lt;- c(NA,&quot;daniel&quot;,&quot;carlos&quot;,&quot;carla&quot;,&quot;solange&quot;)</code></pre>
+</div>
+</div>
+<div id="número-de-elementos." class="section level3">
+<h3><em>Número De Elementos.</em></h3>
+<div id="descripción.-14" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estas líneas de código se utilizan para determinar cuántos elementos
+hay en cada uno de los vectores ‘empresas’, ‘funcionarios’,
+‘presenca_bolsa’, ‘sede_brasil’ y ‘diretor_executivo’. Esto puede ser
+útil para verificar la cantidad de datos disponibles en cada uno de
+estos vectores o para realizar análisis de datos más adelante en su
+código.</p>
+<pre class="r"><code>length(empresas)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>length(funcionarios)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>length(presenca_bolsa)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>length(sede_brasil)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>length(diretor_executivo)</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+</div>
+<div id="número-de-elementos-2." class="section level3">
+<h3><em>Número De Elementos 2.</em></h3>
+<div id="descripción.-15" class="section level4">
+<h4><span style="color: green">Descripción.</span></h4>
+<p>Estas líneas de código crean un marco de datos llamado ‘datos’ a
+partir de los vectores previamente definidos y te permiten visualizar
+los datos de manera estructurada en forma de tabla, lo que facilita su
+análisis y manipulación.</p>
+<pre class="r"><code>datos &lt;- data.frame(empresas, funcionarios, presenca_bolsa, 
+                    sede_brasil, diretor_executivo)
+
+datos</code></pre>
+<pre><code>##    empresas funcionarios presenca_bolsa sede_brasil diretor_executivo
+## 1 Empresa A          100          FALSE          NA              &lt;NA&gt;
+## 2      &lt;NA&gt;         5000           TRUE           0            daniel
+## 3 Empresa C          230             NA           1            carlos
+## 4 Empresa D        12000           TRUE           0             carla
+## 5 Empresa E         1700           TRUE           0           solange</code></pre>
+<pre class="r"><code>View(datos)</code></pre>
+<p>la tabla representa los datos organizados en un formato tabular para
+facilitar su visualización y análisis. Cada columna representa una
+característica específica de las empresas, y cada fila corresponde a una
+entidad o empresa diferente.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

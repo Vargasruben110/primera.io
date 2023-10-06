@@ -1,0 +1,192 @@
+
+### *Base De Datos.*
+
+#### [Descripción.]{style="color: green"}
+
+Este comando te ayudará a explorar y comprender los conjuntos de datos disponibles en el paquete "datasets" y te proporcionará información valiosa sobre cómo trabajar con ellos en R. Puedes utilizar estos conjuntos de datos para prácticas y ejemplos mientras aprendes R o para realizar análisis y visualizaciones de datos en tus proyectos.
+
+```{r}
+help(package = "datasets")
+```
+
+### *Cargar La Base De Datos Orange.*
+
+#### [Descripción.]{style="color: green"}
+
+```{r}
+data(Orange)
+
+Orange
+```
+Esta base de datos contiene información sobre el rendimiento de los árboles de naranja en diferentes experimentos. Aquí está una explicación de los datos:
+
+- **Tree**: Esta columna identifica el número de árbol en el experimento. Hay cinco árboles diferentes etiquetados como 1, 2, 3, 4 y 5. Cada árbol representa una unidad experimental separada.
+
+- **age**: Esta columna representa la edad del árbol en días. Muestra cuántos días han pasado desde que se plantó el árbol hasta el momento de la medición.
+
+- **circumference**: Esta columna representa la circunferencia del tronco del árbol en milímetros. La circunferencia del tronco es una medida importante para evaluar el crecimiento de los árboles y su salud.
+
+Los datos muestran cómo la edad y la circunferencia del tronco de los árboles de naranja cambian a lo largo del tiempo y en diferentes árboles. Cada fila en la tabla representa una observación tomada en un momento específico para un árbol particular.
+
+### *Mostrar Las Primeras Y Ultimas Filas De La Base De Datos.*
+
+#### [Descripción.]{style="color: green"}
+En el contexto de la base de datos "Orange" que proporcionaste anteriormente, estos comandos se utilizan de la siguiente manera:
+
+- **head(Orange)**: Este comando muestra las primeras filas de la base de datos "Orange". Por lo general, muestra las primeras 6 filas de datos por defecto, pero puedes especificar un número diferente de filas si lo deseas. Las filas mostradas te darán una idea de cómo se estructuran y qué tipo de información contiene la base de datos.
+
+- **tail(Orange)**: Este comando muestra las últimas filas de la base de datos "Orange". Al igual que con **head()**, por defecto muestra las últimas 6 filas, pero puedes especificar un número diferente si es necesario. Las filas finales te darán una idea de cómo terminan los datos en la base de datos.
+
+```{r}
+head(Orange)
+tail(Orange)
+```
+**Primeros 6 datos (observaciones 1 a 6)**:
+
+Estas observaciones corresponden al Árbol 1.
+- El árbol 1 muestra un crecimiento gradual a lo largo del tiempo, ya que la circunferencia del tronco aumenta a medida que pasa el tiempo.
+- La edad inicial del árbol 1 es de 118 días, con una circunferencia de 30 mm, y después de 1372 días, la circunferencia ha aumentado a 142 mm.
+
+**Últimos 6 datos (observaciones 30 a 35)**:
+
+Estas observaciones corresponden al Árbol 5.
+- Al igual que el Árbol 1, el Árbol 5 también muestra un crecimiento gradual a lo largo del tiempo, con un aumento en la circunferencia del tronco.
+- La edad inicial del Árbol 5 es de 118 días, con una circunferencia de 30 mm, y después de 1372 días, la circunferencia ha aumentado a 174 mm.
+
+
+### *Estructura De La Base De Datos.*
+
+#### [Descripción.]{style="color: green"}
+Proporciona información útil para comprender la estructura y el contenido de la base de datos "Orange", incluyendo el tipo de datos y las variables presentes en ella. Esto es especialmente útil al trabajar con conjuntos de datos desconocidos o para verificar la estructura de los datos antes de realizar análisis y visualizaciones.
+```{r}
+str(Orange)
+```
+
+### *Número De Filas.*
+
+#### [Descripción.]{style="color: green"}
+- nrow(Orange) Proporciona el número total de filas u observaciones en la base de datos "Orange", lo que es útil para tener una idea de la cantidad de datos disponibles en el conjunto de datos.
+- ncol(Orange) Proporciona el número total de columnas o variables en la base de datos "Orange", lo que es útil para comprender la estructura de la base de datos y cuántos atributos diferentes se registran para cada observación.
+- dim(Orange) Es útil para obtener información sobre las dimensiones de la base de datos, es decir, cuántas filas y columnas contiene, lo que puede ser útil al realizar análisis y manipulación de datos.
+```{r}
+nrow(Orange)
+ncol(Orange)
+dim(Orange)
+```
+
+### *Nombres De Las Columnas.*
+
+#### [Descripción.]{style="color: green"}
+proporciona los nombres de las columnas o variables presentes en la base de datos "Orange", lo que facilita la identificación y el acceso a las variables específicas en nuestros análisis y operaciones.
+```{r}
+names(Orange)
+```
+
+### *Acceder A Variables Específicas.*
+
+#### [Descripción.]{style="color: green"}
+Los comandos **Orange$age** y **Orange$circumference** se utilizan para acceder a columnas específicas de la base de datos "Orange". En R, el símbolo **$** se utiliza para seleccionar una columna específica de un data frame o un objeto de datos similar.
+
+- **Orange$age**: Este comando nos devuelve la columna "age" de la base de datos "Orange". En esta columna se registra la edad de los árboles en días. Al ejecutar este comando, obtendrás un vector que contiene todos los valores de edad de los árboles en el conjunto de datos.
+- **Orange$circumference**: Este comando nos devuelve la columna "circumference" de la base de datos "Orange". En esta columna se registra la circunferencia del tronco de los árboles en milímetros. Al ejecutar este comando, obtendrás un vector que contiene todos los valores de circunferencia del tronco en el conjunto de datos.
+```{r}
+Orange$age
+Orange$circumference
+```
+
+### *Otra Forma De Acceder A Las Variables.*
+
+#### [Descripción.]{style="color: green"}
+Estos comandos te permiten acceder y trabajar con datos específicos dentro de la base de datos "Orange" según tus necesidades de análisis o manipulación de datos.
+- **Orange[, "age"]** selecciona una columna completa.
+- **Orange[2, ]** selecciona una fila completa.
+- **Orange[2, 2]** selecciona un valor específico en una fila y columna.
+
+```{r}
+Orange[, "age"]
+Orange[2, ]
+Orange[2, 2]
+```
+
+### *Usar La Función attach Y detach.*
+
+#### [Descripción.]{style="color: green"}
+las funciones `attach()` y `detach()` en R las podemos explicar asi:
+
+- **attach(Orange)**: La función **attach()** se utiliza para adjuntar un objeto de datos (en este caso, la base de datos "Orange") al entorno de trabajo actual. Cuando adjuntas un objeto de datos, R asume que las variables de ese objeto están disponibles sin la necesidad de especificar el nombre del objeto o el operador **$**. En este caso, después de ejecutar **attach(Orange)**, puedes acceder a las variables de la base de datos "Orange" directamente por su nombre, como si estuvieran en el entorno global.
+
+- **detach(Orange)**: La función **detach()** se utiliza para desvincular o eliminar la adjunción de un objeto de datos del entorno de trabajo actual. Después de ejecutar **detach(Orange)**, la base de datos "Orange" ya no está adjunta al entorno de trabajo, y debes usar la notación **Orange$** para acceder a sus variables.
+```{r}
+attach(Orange)
+age
+detach(Orange)
+```
+
+### *Acceder a observaciones específicas.*
+
+#### [Descripción.]{style="color: green"}
+Estos comandos nos permiten acceder a datos específicos en la base de datos "Orange" según el número de observación y el nombre de la variable. Esto es útil para extraer información específica de la base de datos cuando sea necesario para análisis o visualizaciones particulares.
+
+
+```{r}
+Orange[1, ]
+Orange[2, 1]
+Orange[4, 5]
+Orange[1, "age"]
+```
+- **Orange[1, ]**: Este comando selecciona la primera observación (fila) de la base de datos "Orange" y devuelve todos los valores de esa fila. Esto te dará una visión completa de los atributos de la primera observación.
+- **Orange[2, 1]**: Este comando selecciona el valor que se encuentra en la segunda fila (observación) y la primera columna (variable) de la base de datos "Orange". En este caso, estarías obteniendo un valor específico de la segunda observación y la variable "Tree" (número de árbol).
+- **Orange[4, 5]**: Este comando selecciona el valor que se encuentra en la cuarta fila (observación) y la quinta columna (variable) de la base de datos "Orange". Obtendrás un valor específico de la cuarta observación y la variable "circumference" (circunferencia del tronco).
+- **Orange[1, "age"]**: Este comando selecciona el valor que se encuentra en la primera fila (observación) y la columna "age" de la base de datos "Orange". Esto te dará el valor específico de la edad del árbol en la primera observación.
+
+### *Acceder a varias columnas.*
+
+#### [Descripción.]{style="color: green"}
+Al ejecutar este comando, obtendrEMOS un nuevo conjunto de datos que incluye solo las columnas "age" y "circumference" de la base de datos "Orange". Esto puede ser útil cuando deseas trabajar solo con un subconjunto específico de variables en tu análisis o visualización de datos.
+```{r}
+Orange[, c("age", "circumference")]
+```
+
+### *Otra forma de seleccionar columnaS.*
+
+#### [Descripción.]{style="color: green"}
+Este comando excluye las columnas 4 y 5 de la base de datos "Orange". El operador - se utiliza para indicar que deseas eliminar (excluir) las columnas especificadas. En este caso, las columnas 4 y 5 corresponden a "age" (edad) y "circumference" (circunferencia), respectivamente. Por lo tanto, el resultado es un subconjunto de la base de datos que contiene todas las filas y todas las columnas excepto las dos mencionadas.
+```{r}
+Orange[, -c(4:5)]
+```
+
+### *Usar la función which para filtrar datos.*
+
+#### [Descripción.]{style="color: green"}
+La función **which()** para filtrar datos en la base de datos "Orange" según ciertos criterios. 
+
+1. **Orange[which(Orange$age > 120), ]**: Este comando selecciona todas las filas (observaciones) de la base de datos "Orange" en las que el valor de la columna "age" (edad) sea mayor que 120 días. La función **which()** devuelve los índices de las observaciones que cumplen con este criterio, y luego se utilizan esos índices para seleccionar las filas correspondientes.
+2. **Orange[which(Orange$circumference < 85), ]**: Este comando selecciona todas las filas de la base de datos "Orange" en las que el valor de la columna "circumference" (circunferencia) sea menor que 85 mm. Al igual que en el primer comando, la función **which()** se utiliza para obtener los índices de las observaciones que cumplen con el criterio y luego se seleccionan las filas correspondientes.
+3. **Orange[which(Orange$age >, 100 & Orange$circumference < 85), ]**: Este comando combina dos condiciones. Selecciona todas las filas de la base de datos "Orange" en las que el valor de la columna "age" sea mayor que 100 días y el valor de la columna "circumference" sea menor que 85 mm. La función **which()** se utiliza para obtener los índices de las observaciones que cumplen con ambas condiciones, y luego se seleccionan las filas correspondientes.
+```{r}
+Orange[which(Orange$age > 120), ]
+Orange[which(Orange$circumference < 85), ]
+Orange[which(Orange$age > 100 & Orange$circumference < 85), ]
+```
+
+### *Editar variables.*
+
+#### [Descripción.]{style="color: green"}
+Este proceso te permite agregar una nueva variable a la base de datos, inicializarla con valores NA y luego editar los valores de esa variable en filas específicas según tus necesidades de análisis de datos.
+- **Orange$new_var <- NA**: Con este comando, se crea una nueva columna llamada "new_var" en la base de datos "Orange". Inicialmente, todos los valores de esta columna se establecen en NA, que indica que no hay datos disponibles.
+
+- **head(Orange)**: Después de agregar la nueva columna, se utiliza **head()** para mostrar las primeras filas de la base de datos "Orange". Verás que la columna "new_var" se ha agregado y todos sus valores son NA en las primeras filas.
+
+- **Orange[1, "new_var"] <- 82**: En este paso, se cambia el valor de la variable "new_var" en la primera fila (observación 1) de la base de datos "Orange" a 82. Esto significa que la primera observación ahora tiene un valor específico de 82 en la columna "new_var".
+
+- **head(Orange)**: Después de realizar la edición en la primera fila, se utiliza nuevamente **head()** para mostrar las primeras filas de la base de datos "Orange". Ahora, en la primera fila, verás que la columna "new_var" tiene el valor 82, mientras que en las filas restantes, los valores de "new_var" siguen siendo NA.
+
+```{r}
+Orange$new_var <- NA
+head(Orange)
+Orange[1, "new_var"] <- 82
+head(Orange)
+
+```
+
+## *FIN*
